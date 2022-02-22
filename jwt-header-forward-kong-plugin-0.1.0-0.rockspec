@@ -22,5 +22,6 @@ build = {
     type = "builtin",
     modules = {
         ["kong.plugins.jwt-header-forward-kong-plugin.handler"] = "kong/plugins/jwt-header-forward-kong-plugin/handler.lua",
+        ["kong.plugins.jwt-header-forward-kong-plugin.schema"] = "kong/plugins/jwt-header-forward-kong-plugin/schema.lua",
     }
 }
