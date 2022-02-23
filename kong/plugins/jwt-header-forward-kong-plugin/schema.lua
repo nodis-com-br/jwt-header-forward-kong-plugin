@@ -1,5 +1,24 @@
+local typedefs = require "kong.db.schema.typedefs"
+
 return {
-    no_consumer = true,
-    fields = {
-    }
+  name = "jwt-header-forward",
+  fields = {
+    { consumer = typedefs.no_consumer },
+    { protocols = typedefs.protocols_http },
+    { config = {
+        type = "record",
+        fields = {
+          {
+            mappings = {
+              type = "array",
+              elements = {
+                type = "string",
+              },
+            },
+          },
+        },
+        required = true,
+      },
+    },
   }
+}
