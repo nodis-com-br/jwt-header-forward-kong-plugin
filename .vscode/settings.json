@@ -1,0 +1,6 @@
+{
+    "Lua.diagnostics.globals": [
+        "kong"
+    ],
+    "Lua.runtime.version": "LuaJIT",
+}
