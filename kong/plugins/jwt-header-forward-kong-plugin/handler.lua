@@ -66,6 +66,10 @@ end
 function JwtHeaderForwardHandler:access(conf)
   JwtHeaderForwardHandler.super.access(self, conf)
 
+  local mappings = parse_mappings(conf.mappings)
+
+  clear_destination_headers(mappings)
+  
   local token = extract_bearer_token()
   if not token then
     return
@@ -75,10 +79,6 @@ function JwtHeaderForwardHandler:access(conf)
   if err then
     return
   end
-
-  local mappings = parse_mappings(conf.mappings)
-
-  clear_destination_headers(mappings)
 
   if not jwt.claims then
     return
