@@ -1,7 +1,7 @@
 package = "jwt-header-forward-kong-plugin"
 version = "0.1.0-0"
 source = {
-    url = "git://github.com/nodis-com-br/jwt-header-forward-kong-plugin",
+    url = "git+https://github.com/nodis-com-br/jwt-header-forward-kong-plugin",
     dir = "jwt-header-forward-kong-plugin"
 }
 description = {
