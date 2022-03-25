@@ -1,6 +1,6 @@
 local BasePlugin = require "kong.plugins.base_plugin"
 local jwt_parser = require "kong.plugins.jwt.jwt_parser"
-local req_get_headers = kong.request.get_headers
+local req_get_header = kong.request.get_header
 local req_set_header = kong.service.request.set_header
 local req_clear_header = kong.service.request.clear_header
 
@@ -28,7 +28,7 @@ end
 --- Extract Bearer token from the Authorization request header.
 -- @return token, or nil
 local function extract_bearer_token()
-  local authorization = req_get_headers()["Authorization"]
+  local authorization = req_get_header("Authorization")
   if not authorization then
     return
   end
@@ -69,7 +69,7 @@ function JwtHeaderForwardHandler:access(conf)
   local mappings = parse_mappings(conf.mappings)
 
   clear_destination_headers(mappings)
-  
+
   local token = extract_bearer_token()
   if not token then
     return
